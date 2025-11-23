@@ -1,0 +1,6 @@
+export { default as Inicio } from './Inicio'
+export { default as Clientes } from './Clientes'
+export { default as Proveedores } from './Proveedores'
+export { default as Productos } from './Productos'
+export { default as Ventas } from './Ventas'
+export { default as Reportes } from './Reportes'
