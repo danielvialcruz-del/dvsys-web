@@ -1,8 +1,12 @@
-export default function Inicio() {
+const Inicio = () => {
   return (
-    <div className="text-center py-20">
-      <h1 className="text-5xl font-bold text-indigo-700 mb-4">¡Bienvenido a DVsys!</h1>
-      <p className="text-2xl text-gray-600">Sistema de gestión completo</p>
+    <div className="flex flex-col items-center justify-center h-screen -ml-64 bg-gray-50">
+      <img src="/logo_dv.svg" alt="Daniel Vial Muebles" className="w-96 mb-16" />
+      <h1 className="text-5xl font-light text-black">
+        Daniel Vial Muebles
+      </h1>
     </div>
-  )
-}
+  );
+};
+
+export default Inicio;

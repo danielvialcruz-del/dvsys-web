@@ -1,35 +1,34 @@
-import { Routes, Route, Link } from 'react-router-dom'
-import { Inicio, Clientes, Proveedores, Productos, Ventas, Reportes } from './paginas'
+import { useState } from 'react';
+import MenuLateral from './componentes/MenuLateral';
+import ModalAyuda from './componentes/ModalAyuda';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="bg-indigo-700 text-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center space-x-10">
-            <h1 className="text-2xl font-bold">DVsys</h1>
-            <Link to="/" className="hover:bg-indigo-600 px-4 py-2 rounded">Inicio</Link>
-            <Link to="/clientes" className="hover:bg-indigo-600 px-4 py-2 rounded">Clientes</Link>
-            <Link to="/proveedores" className="hover:bg-indigo-600 px-4 py-2 rounded">Proveedores</Link>
-            <Link to="/productos" className="hover:bg-indigo-600 px-4 py-2 rounded">Productos</Link>
-            <Link to="/ventas" className="hover:bg-indigo-600 px-4 py-2 rounded">Ventas</Link>
-            <Link to="/reportes" className="hover:bg-indigo-600 px-4 py-2 rounded">Reportes</Link>
-          </div>
-        </div>
-      </nav>
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [tituloAyuda, setTituloAyuda] = useState('');
+  const [claveNota, setClaveNota] = useState('');
 
-      <main className="max-w-7xl mx-auto px-6 py-10">
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/clientes" element={<Clientes />} />
-          <Route path="/proveedores" element={<Proveedores />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/ventas" element={<Ventas />} />
-          <Route path="/reportes" element={<Reportes />} />
-        </Routes>
+  const abrirAyuda = (modulo: string, boton: string) => {
+    const clave = `${modulo.toLowerCase().replace(/ /g, '_')}_${boton.toLowerCase().replace(/ /g, '_')}`;
+    setClaveNota(clave);
+    setTituloAyuda(`${modulo} → ${boton}`);
+    setModalAbierto(true);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex">
+      <MenuLateral abrirAyuda={abrirAyuda} />
+      <main className="flex-1 ml-64 p-8">
+        <Outlet />
       </main>
+      <ModalAyuda
+        abierto={modalAbierto}
+        alCerrar={() => setModalAbierto(false)}
+        titulo={tituloAyuda}
+        clave={claveNota}
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
