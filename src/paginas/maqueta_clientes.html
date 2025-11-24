@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maqueta Clientes DV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-200">
+    <div class="flex h-screen">
+        <!-- Barra Lateral -->
+        <div class="w-64 bg-gray-100 border-r border-gray-400 flex flex-col">
+            <div class="p-4 font-bold text-lg border-b border-gray-400">DV Sistema</div>
+            <nav class="flex-1 p-2">
+                <button class="w-full text-left px-4 py-3 my-1 rounded bg-gray-300 hover:bg-gray-400">Inicio</button>
+                <button class="w-full text-left px-4 py-3 my-1 rounded bg-gray-300 hover:bg-gray-400">Clientes</button>
+                <button class="w-full text-left px-4 py-3 my-1 rounded hover:bg-gray-400">Proyectos</button>
+                <button class="w-full text-left px-4 py-3 my-1 rounded hover:bg-gray-400">Proveedores</button>
+                <button class="w-full text-left px-4 py-3 my-1 rounded hover:bg-gray-400">Cotizaciones</button>
+                <button class="w-full text-left px-4 py-3 my-1 rounded hover:bg-gray-400">Presupuestos</button>
+                <button class="w-full text-left px-4 py-3 my-1 rounded hover:bg-gray-400">Notas de Venta</button>
+            </nav>
+        </div>
+
+        <!-- Panel Central - Maqueta Clientes -->
+        <div class="flex-1 overflow-auto bg-gray-100">
+            <div class="p-6">
+                <h2 class="text-xl font-bold mb-4">Gestión de Clientes</h2>
+
+                <!-- Botones -->
+                <div class="flex gap-4 mb-6">
+                    <button class="px-6 py-2 bg-gray-300 hover:bg-gray-400 flex items-center gap-2 border border-gray-500 rounded">
+                        <span>📄</span>Nuevo
+                    </button>
+                    <button class="px-6 py-2 bg-gray-300 hover:bg-gray-400 flex items-center gap-2 border border-gray-500 rounded">
+                        <span>💾</span>Guardar
+                    </button>
+                    <button class="px-6 py-2 bg-gray-300 hover:bg-gray-400 flex items-center gap-2 border border-gray-500 rounded">
+                        <span>🗑️</span>Eliminar
+                    </button>
+                </div>
+
+                <!-- Formulario -->
+                <div class="bg-white p-6 border border-gray-400 mb-6 rounded">
+                    <div class="flex gap-8">
+                        <div class="flex-1">
+                            <div class="mb-4">
+                                <strong class="block mb-1">Alias:</strong>
+                                <input class="w-full border border-gray-400 px-2 py-1" placeholder="Ingresa alias" />
+                            </div>
+                            <div class="mb-4">
+                                <strong class="block mb-1">Razón Social:</strong>
+                                <input class="w-full border border-gray-400 px-2 py-1" placeholder="Ingresa razón social" />
+                            </div>
+                            <div class="mb-4">
+                                <strong class="block mb-1">RUT:</strong>
+                                <input class="w-full border border-gray-400 px-2 py-1" placeholder="Ingresa RUT" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grilla -->
+                <div class="bg-white border border-gray-400 rounded overflow-hidden">
+                    <table class="w-full">
+                        <thead class="bg-gray-200 border-b-2 border-gray-400">
+                            <tr>
+                                <th class="px-4 py-2 text-left font-bold">Alias</th>
+                                <th class="px-4 py-2 text-left font-bold">Razón Social</th>
+                                <th class="px-4 py-2 text-left font-bold">RUT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="px-4 py-2">Cliente 1</td>
+                                <td class="px-4 py-2">Razón Social 1</td>
+                                <td class="px-4 py-2">12.345.678-9</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="px-4 py-2">Cliente 2</td>
+                                <td class="px-4 py-2">Razón Social 2</td>
+                                <td class="px-4 py-2">98.765.432-1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

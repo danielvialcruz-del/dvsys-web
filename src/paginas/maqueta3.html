@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maqueta Clientes DV – FINAL 75% + Íconos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+    .escala-75 { 
+      transform: scale(0.75); 
+      transform-origin: top left; 
+      width: 133.33%; 
+      height: 133.33%;
+    }
+  </style>
+</head>
+<body class="bg-white text-black min-h-screen">
+
+  <div class="escala-75">
+    <div class="max-w-3xl mx-auto p-8">
+      <h1 class="text-lg font-bold mb-6">Gestión de Clientes</h1>
+
+      <!-- Botones con íconos reales -->
+      <div class="flex gap-6 mb-6">
+        <button class="px-8 py-2 bg-gray-100 hover:bg-gray-200 border border-gray-400 flex items-center gap-3">
+          <img src="https://api.iconify.design/mdi:file-document-plus-outline.svg?color=black" width="18" height="18" alt="Nuevo">
+          Nuevo
+        </button>
+        <button class="px-8 py-2 bg-gray-100 hover:bg-gray-200 border border-gray-400 flex items-center gap-3">
+          <img src="https://api.iconify.design/mdi:content-save.svg?color=black" width="18" height="18" alt="Guardar">
+          Guardar
+        </button>
+        <button class="px-8 py-2 bg-gray-100 hover:bg-gray-200 border border-gray-400 flex items-center gap-3">
+          <img src="https://api.iconify.design/mdi:trash-can-outline.svg?color=black" width="18" height="18" alt="Eliminar">
+          Eliminar
+        </button>
+      </div>
+
+      <!-- Formulario -->
+      <div class="bg-white border border-gray-400 p-6 mb-6">
+        <div class="space-y-1 max-w-2xl">
+          <div class="flex items-center gap-8">
+            <label class="w-32 font-medium">Alias:</label>
+            <input class="flex-1 border border-gray-400 px-3 py-1" />
+          </div>
+          <div class="flex items-center gap-8">
+            <label class="w-32 font-medium">Razón Social:</label>
+            <input class="flex-1 border border-gray-400 px-3 py-1" />
+          </div>
+          <div class="flex items-center gap-8">
+            <label class="w-32 font-medium">RUT:</label>
+            <input class="flex-1 border border-gray-400 px-3 py-1" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Grilla -->
+      <div class="border border-gray-400">
+        <table class="w-full">
+          <thead class="bg-gray-100 text-black">
+            <tr>
+              <th class="px-6 py-2 text-left font-medium">Alias</th>
+              <th class="px-6 py-2 text-left font-medium">Razón Social</th>
+              <th class="px-6 py-2 text-left font-medium">RUT</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-300">
+            <tr class="hover:bg-gray-50 cursor-pointer">
+              <td class="px-6 py-2">MUEBLES SUR</td>
+              <td class="px-6 py-2">Muebles del Sur Ltda.</td>
+              <td class="px-6 py-2">76.543.210-5</td>
+            </tr>
+            <tr class="hover:bg-gray-50 cursor-pointer">
+              <td class="px-6 py-2">CLIENTE VIP</td>
+              <td class="px-6 py-2">Inversiones VIP SpA</td>
+              <td class="px-6 py-2">77.123.456-7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
