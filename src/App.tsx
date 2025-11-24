@@ -1,3 +1,4 @@
+// src/App.tsx  ←  REEMPLAZA TODO el contenido actual por esto
 import React, { useState } from "react";
 import {
   Inicio,
@@ -10,43 +11,47 @@ import {
 } from "./paginas";
 
 export default function App() {
-  const [paginaActual, setPaginaActual] = useState(0);
+  const [modulo, setModulo] = useState<"Inicio" | "Clientes" | "Proyectos" | "Proveedores" | "Cotizaciones" | "Presupuestos" | "NotasVenta">("Inicio");
 
-  const modulos = [
-    { nombre: "Inicio", componente: <Inicio /> },
-    { nombre: "Clientes", componente: <Clientes /> },
-    { nombre: "Proyectos", componente: <Proyectos /> },
-    { nombre: "Proveedores", componente: <Proveedores /> },
-    { nombre: "Cotizaciones", componente: <Cotizaciones /> },
-    { nombre: "Presupuestos", componente: <Presupuestos /> },
-    { nombre: "Notas de Venta", componente: <NotasVenta /> },
-  ];
+  const modulos = {
+    Inicio,
+    Clientes,
+    Proyectos,
+    Proveedores,
+    Cotizaciones,
+    Presupuestos,
+    NotasVenta,
+  };
+
+  const ModuloActual = modulos[modulo];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Menú lateral */}
-      <div className="w-72 bg-slate-900 text-white p-6">
-        <h1 className="text-3xl font-bold mb-12 text-center">DV Sistema</h1>
-        <nav className="space-y-2">
-          {modulos.map((mod, i) => (
+    <div className="flex h-screen bg-gray-100">
+      {/* BARRA LATERAL FIJA – exactamente como tu PyQt5 */}
+      <div className="w-64 bg-slate-800 text-white flex flex-col">
+        <div className="p-6 text-center border-b border-slate-700">
+          <h1 className="text-2xl font-bold">DV Sistema</h1>
+        </div>
+        <nav className="flex-1 p-4 space-y-2">
+          {Object.keys(modulos).map((nombre) => (
             <button
-              key={i}
-              onClick={() => setPaginaActual(i)}
-              className={`w-full text-left px-6 py-4 rounded-lg text-lg transition-all ${
-                paginaActual === i
-                  ? "bg-sky-600 font-semibold shadow-lg"
+              key={nombre}
+              onClick={() => setModulo(nombre as any)}
+              className={`w-full text-left px-4 py-3 rounded-lg transition ${
+                modulo === nombre
+                  ? "bg-sky-600 font-semibold"
                   : "hover:bg-slate-700"
               }`}
             >
-              {mod.nombre}
+              {nombre === "NotasVenta" ? "Notas de Venta" : nombre}
             </button>
           ))}
         </nav>
       </div>
 
-      {/* Contenido principal */}
-      <div className="flex-1 overflow-auto bg-gray-100">
-        <div className="p-10">{modulos[paginaActual].componente}</div>
+      {/* ZONA CENTRAL – aquí aparece el formulario completo */}
+      <div className="flex-1 overflow-auto">
+        <ModuloActual />
       </div>
     </div>
   );
