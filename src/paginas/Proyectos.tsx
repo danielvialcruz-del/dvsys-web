@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function NombreDelModulo() {
+export default function Proyectos() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold mb-6">NombreDelModulo</h1>
-      <p className="text-gray-600">Módulo en desarrollo – próximamente</p>
+    <div className="p-10 text-3xl font-bold text-green-600">
+      ¡¡¡ EL MÓDULO PROYECTOS SE CARGÓ PERFECTAMENTE !!!
+      <br /><br />
+      Si ves esto, el problema NO es la navegación,<br />
+      sino algo específico dentro del archivo Clientes.tsx
     </div>
   );
 }
