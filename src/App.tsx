@@ -1,34 +1,32 @@
-import { useState } from 'react';
-import MenuLateral from './componentes/MenuLateral';
-import ModalAyuda from './componentes/ModalAyuda';
-import { Outlet } from 'react-router-dom';
+import { useState } from 'react'
+import MenuLateral from './componentes/MenuLateral'
+import PortalAyuda from './componentes/PortalAyuda'
+import { Outlet } from 'react-router-dom'
 
-function App() {
-  const [modalAbierto, setModalAbierto] = useState(false);
-  const [tituloAyuda, setTituloAyuda] = useState('');
-  const [claveNota, setClaveNota] = useState('');
+export default function App() {
+  const [modalData, setModalData] = useState<{ grupo: string; item: string } | null>(null)
 
-  const abrirAyuda = (modulo: string, boton: string) => {
-    const clave = `${modulo.toLowerCase().replace(/ /g, '_')}_${boton.toLowerCase().replace(/ /g, '_')}`;
-    setClaveNota(clave);
-    setTituloAyuda(`${modulo} → ${boton}`);
-    setModalAbierto(true);
-  };
+  const abrirAyuda = (grupo: string, item: string) => {
+    setModalData({ grupo, item })
+  }
+
+  const cerrarAyuda = () => {
+    setModalData(null)
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <>
       <MenuLateral abrirAyuda={abrirAyuda} />
-      <main className="flex-1 ml-64 p-8">
+      <main className="ml-80 min-h-screen bg-gray-50 p-12">
         <Outlet />
       </main>
-      <ModalAyuda
-        abierto={modalAbierto}
-        alCerrar={() => setModalAbierto(false)}
-        titulo={tituloAyuda}
-        clave={claveNota}
-      />
-    </div>
-  );
+      {modalData && (
+        <PortalAyuda
+          grupo={modalData.grupo}
+          item={modalData.item}
+          onClose={cerrarAyuda}
+        />
+      )}
+    </>
+  )
 }
-
-export default App;

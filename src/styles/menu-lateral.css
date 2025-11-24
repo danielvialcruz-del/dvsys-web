@@ -1,0 +1,22 @@
+@layer components {
+  /* TÍTULOS DE PRIMER NIVEL → Proyectos, Finanzas, Recursos Humanos */
+  .menu-titulo-principal {
+    @apply font-bold text-black tracking-tight;
+    font-size: 19px;        /* ← AQUÍ CAMBIAS EL TAMAÑO EXACTO Y SE APLICA EN TODO EL MENÚ */
+    line-height: 1.4;
+    padding-top: 6px;       /* ← ESTA LÍNEA NUEVA */
+    padding-bottom: 6px;    /* ← Y ESTA OTRA */
+  }
+
+  /* ÍTEMS DE SEGUNDO NIVEL → Clientes, Cotizaciones, Empleados, etc. */
+  .menu-item-secundario {
+    @apply text-black;
+    font-size: 15px;        /* ← tamaño del 2º nivel (también lo puedes tocar aquí) */
+  }
+
+  /* BOTÓN "?" DE AYUDA (opcional pero queda más pro) */
+  .menu-boton-ayuda {
+    @apply text-gray-600 hover:text-black font-bold transition-colors;
+    font-size: 16px;
+  }
+}

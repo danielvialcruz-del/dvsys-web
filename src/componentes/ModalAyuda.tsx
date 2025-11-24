@@ -1,79 +1,56 @@
-import React, { useState, useEffect } from 'react';
+// src/components/ModalAyuda.tsx
+
 
 interface ModalAyudaProps {
-  abierto: boolean;
-  alCerrar: () => void;
-  titulo: string;
-  clave: string;
+  grupo: string
+  item: string
+  onClose: () => void
 }
 
-const ModalAyuda: React.FC<ModalAyudaProps> = ({ abierto, alCerrar, titulo, clave }) => {
-  const [nota, setNota] = useState('');
-
-  // Cargar nota guardada al abrir el modal
-  useEffect(() => {
-    if (abierto && clave) {
-      const guardada = localStorage.getItem(`ayuda_${clave}`);
-      setNota(guardada || '');
-    }
-  }, [abierto, clave]);
-
-  const guardarNota = () => {
-    if (nota.trim()) {
-      localStorage.setItem(`ayuda_${clave}`, nota.trim());
-    } else {
-      localStorage.removeItem(`ayuda_${clave}`);
-    }
-    alCerrar();
-  };
-
-  if (!abierto) return null;
-
+export default function ModalAyuda({ grupo, item, onClose }: ModalAyudaProps) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-screen overflow-y-auto">
-        {/* Cabecera */}
-        <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-          <h3 className="text-lg font-semibold text-gray-800">
-            Ayuda: {titulo}
-          </h3>
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+      onClick={onClose}   // cerrar al hacer clic fuera
+    >
+      <div 
+        className="bg-white rounded-lg shadow-2xl w-96 max-w-full mx-4 border border-gray-300 relative"
+        onClick={e => e.stopPropagation()}   // evitar cerrar al hacer clic dentro
+      >
+        {/* Barra de título estilo Windows (sutil) */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-4 py-2 rounded-t-lg flex justify-between items-center">
+          <span className="text-sm font-medium">Ayuda del sistema</span>
           <button
-            onClick={alCerrar}
-            className="text-gray-500 hover:text-gray-700 text-2xl"
+            onClick={onClose}
+            className="w-8 h-8 hover:bg-white hover:bg-opacity-20 rounded flex items-center justify-center text-lg font-bold"
           >
             ×
           </button>
         </div>
 
-        {/* Cuerpo */}
+        {/* Contenido */}
         <div className="p-6">
-          <textarea
-            value={nota}
-            onChange={(e) => setNota(e.target.value)}
-            placeholder="Escribe aquí tus notas de ayuda personalizadas..."
-            className="w-full h-64 p-4 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            spellCheck={false}
-          />
+          <h3 className="text-lg font-semibold text-gray-800 mb-3">
+            {item}
+          </h3>
+          <div className="text-gray-700 space-y-2">
+            <p><strong>Módulo:</strong> {grupo}</p>
+            <p className="mt-4 text-sm italic text-gray-500">
+              Aquí irá la explicación detallada de esta función cuando la agreguemos.
+            </p>
+          </div>
         </div>
 
-        {/* Pie */}
-        <div className="px-6 py-4 border-t border-gray-200 flex justify-end gap-3">
+        {/* Pie (opcional) */}
+        <div className="bg-gray-100 px-4 py-3 rounded-b-lg text-right">
           <button
-            onClick={alCerrar}
-            className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium"
+            onClick={onClose}
+            className="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium"
           >
-            Cancelar
-          </button>
-          <button
-            onClick={guardarNota}
-            className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-medium"
-          >
-            Guardar nota
+            Cerrar
           </button>
         </div>
       </div>
     </div>
-  );
-};
-
-export default ModalAyuda;
+  )
+}

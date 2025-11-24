@@ -1,13 +1,67 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================= */
+/* ESTILO GLOBAL DEFINITIVO – FONDO BLANCO – VERCEL/GROK 2025   */
+/* ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  color: #1a1a1a !important;
+  line-height: 1.6 !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Fondo blanco puro en toda la app */
+body, #root, aside, nav, main, div {
+  background: #ffffff !important;
 }
+
+/* PRIMER NIVEL → Proyectos, Finanzas, Recursos Humanos */
+aside button:has(> span.w-10) {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  padding: 7px 0 !important;
+  line-height: 1.5 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* SEGUNDO NIVEL → Clientes, Cotizaciones, Empleados, etc. */
+aside .flex.justify-between.items-center {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* SIN FONDO GRIS NUNCA */
+.menu-section-title button,
+.menu-section-title:hover {
+  background: transparent !important;
+}
+
+/* Hover sutil */
+button:hover, a:hover, div:hover {
+  background: #f6f8fa !important;
+  border-radius: 8px !important;
+}
+
+/* Enlaces sin azul NUNCA */
+a, a:hover, a:visited {
+  color: #1a1a1a !important;
+  text-decoration: none !important;
+}
+
+/* Aire generoso */
+aside, nav {
+  padding: 3rem 2rem !important;
+}
+
+/* CACHE BUSTER – cambia este número cada vez que hagas un cambio */
+body::before { 
+  content: "v251" !important; 
+  display: none; 
+}
+
